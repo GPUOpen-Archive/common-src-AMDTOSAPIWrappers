@@ -119,50 +119,8 @@
     <ClCompile Include="src\win32\oaPlatformSpecificFunctionPointers.cpp">
       <Filter>src\win32</Filter>
     </ClCompile>
-    <ClCompile Include="src\linux\oaDeviceContext.cpp">
-      <Filter>src\linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linux\oaDriver.cpp">
-      <Filter>src\linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linux\oaHiddenWindow.cpp">
-      <Filter>src\linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linux\oaMessageBox.cpp">
-      <Filter>src\linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linux\oaOpenGLRenderContext.cpp">
-      <Filter>src\linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linux\oaPixelFormat.cpp">
-      <Filter>src\linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linux\oaPlatformSpecificFunctionPointers.cpp">
-      <Filter>src\linux</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mac\oaDeviceContext.cpp">
-      <Filter>src\mac</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mac\oaHiddenWindow.cpp">
-      <Filter>src\mac</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mac\oaMessageBox.cpp">
-      <Filter>src\mac</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mac\oaOpenGLRenderContext.cpp">
-      <Filter>src\mac</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mac\oaPixelFormat.cpp">
-      <Filter>src\mac</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mac\oaPlatformSpecificFunctionPointers.cpp">
-      <Filter>src\mac</Filter>
-    </ClCompile>
     <ClCompile Include="src\win32\oaDisplay.cpp">
       <Filter>src\win32</Filter>
-    </ClCompile>
-    <ClCompile Include="src\linux\oaDisplay.cpp">
-      <Filter>src\linux</Filter>
     </ClCompile>
     <ClCompile Include="src\common\oaDriver.cpp">
       <Filter>src\common</Filter>
@@ -292,11 +250,6 @@
     <ClInclude Include="Include\oaDisplay.h">
       <Filter>Include</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuildStep Include="src\iphone\oaMessageBox.mm">
-      <Filter>src\iphone</Filter>
-    </CustomBuildStep>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\VersionInfo\VersionResource.rc">
