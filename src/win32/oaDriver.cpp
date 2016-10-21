@@ -22,9 +22,6 @@ typedef unsigned int (CL_API_CALL* CALGETVERSION_PROC)(unsigned int* major, unsi
 #include <xlocbuf>
 #include <codecvt>
 
-//External
-#include <inc/amd_ags.h>
-
 // Infra.
 #include <AMDTBaseTools/Include/gtAssert.h>
 #include <AMDTOSWrappers/Include/osDebugLog.h>
@@ -206,32 +203,6 @@ static bool oaGetDriverVersionInfoViaRegistry(gtString& driverVersionWide)
 }
 
 //// ---------------------------------------------------------------------------
-// Name:        oaGetRadeonSoftwareVersion
-// Description: Dynamically load ags dll , retrieves radeon software version and unloads the ags dll
-// Return Val:  gtString - on success returns radeon software version, or empty string
-// Author:      Roman Bober
-// Date:        14/6/2016
-// ---------------------------------------------------------------------------
-gtString oaGetRadeonSoftwareVersion()
-{
-    // we use static result, since we'd like to load AGS lib once and query the radeon software version only once
-    // we assume that radeon software version wouldn't change during process run
-    static gtString result;
-    if (result.isEmpty())
-    {
-        AGSContext* agsContext = nullptr;
-        AGSGPUInfo gpuInfo;
-        AGSReturnCode rc = agsInit(&agsContext, nullptr, &gpuInfo);
-        GT_IF_WITH_ASSERT(rc == AGS_SUCCESS)
-        {
-            result.fromASCIIString(gpuInfo.radeonSoftwareVersion);
-            GT_ASSERT(AGS_SUCCESS == agsDeInit(agsContext));
-        }
-    }
-    return result;
-}
-
-//// ---------------------------------------------------------------------------
 // Name:        oaGetDriverVersion
 // Description: Dynamically load atiadlxx.dll module and using ADL_Graphics_Versions_Get
 //              get the catalyst version
@@ -242,7 +213,7 @@ gtString oaGetRadeonSoftwareVersion()
 OA_API gtString oaGetDriverVersion(int& driverError)
 {
     driverError = OA_DRIVER_UNKNOWN;
-    gtString driverVersion = oaGetRadeonSoftwareVersion();
+    gtString driverVersion = L"";
 
     if (driverVersion.isEmpty() == false)
     {

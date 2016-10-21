@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug_Static|Win32">
@@ -71,7 +71,6 @@
     <Import Project="$(CommonDir)\Src\ADLUtil\Global-ADLUtil.props" />
     <Import Project="$(CommonDir)\Src\AMDTMutex\Global-AMDTMutex.props" />
     <Import Project="$(CommonDir)\Src\TSingleton\Global-TSingleton.props" />
-    <Import Project="$(CommonDir)\Lib\AMD\ags\Global-ags-2015.props" />
   </ImportGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
@@ -99,6 +98,18 @@
     <ClCompile>
       <PreprocessorDefinitions>AMDTBASETOOLS_STATIC;AMDTOSWRAPPERS_STATIC;AMDTOSAPIWRAPPERS_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">Ws2_32.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">Ws2_32.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">Ws2_32.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">Ws2_32.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(CommonDir)\Src\ADLUtil\ADLUtil.cpp" />
