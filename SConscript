@@ -15,7 +15,7 @@ env.Append( CPPPATH = [
     env['CXL_common_dir'] + '/Lib/AMD/HSA/STGFoundation/hsa/include',
     env['CXL_common_dir'] + '/Src/DynamicLibraryModule',
     env['CXL_common_dir'] + '/Src/HSAUtils',
-	'/opt/rocm/hsa/include', # A dependency of /Src/HSAUtils
+	'/opt/rocm/hsa/include/hsa', # A dependency of /Src/HSAUtils
     env['CXL_common_dir'] + '/Src/TSingleton',
     "/usr/include/gdk-pixbuf-2.0/", # [Suravee] Needed for Ubuntu-11.10 
 ])
