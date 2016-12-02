@@ -36,12 +36,14 @@ typedef unsigned int (CL_API_CALL* CALGETVERSION_PROC)(unsigned int* major, unsi
 // Local:
 #include <AMDTOSAPIWrappers/Include/oaStringConstants.h>
 
+#ifndef CMAKE_BUILD
 // We don't need all of ADLUtil.cpp on Linux, just this function:
 void* ADL_Main_Memory_Alloc(int iSize)
 {
     void* lpBuffer = malloc(iSize);
     return lpBuffer;
 }
+#endif
 
 // ---------------------------------------------------------------------------
 // Name:        oaGetCalVersion
