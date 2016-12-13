@@ -91,7 +91,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>zlibstat.lib;User32.lib;Advapi32.lib;Gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(CommonDir)\Lib\Ext\zlib\1.2.8\contrib\vstudio\vc14\$(GDTPlatform)\ZlibStat$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(CommonDir)\Lib\Ext\zlib\1.2.8\contrib\vstudio\vc14\$(AMDTPlatform)\ZlibStat$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(AMDTModuleType)'=='Static'">
