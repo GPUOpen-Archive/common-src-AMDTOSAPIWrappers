@@ -39,20 +39,20 @@ include_directories("${PROJECT_SOURCE_DIR}/../../Lib/AMD/ADL/include")
 
 # Source files that are common to Windows and Linux
 file(GLOB COMMON_SRC
-    "src/common/*.h"
-    "src/common/*.cpp"
+    "src/common/oaDriver.h"
+    "src/common/oaDriver.cpp"
 )
 
 # Windows-specific source files
 file(GLOB WINDOWS_SRC
-    "src/win32/*.h"
-    "src/win32/*.cpp"
+    "src/win32/oaDriver.h"
+    "src/win32/oaDriver.cpp"
 )
 
 # Linux-specific source files
 file(GLOB LINUX_SRC
-    "src/linux/*.h"
-    "src/linux/*.cpp"
+    "src/linux/oaDriver.h"
+    "src/linux/oaDriver.cpp"
 )
 
 # add the library (change STATIC to SHARED for dynamic library build)
