@@ -46,6 +46,15 @@ typedef int(*ADL2_Graphics_Versions_Get_fn)(ADL_CONTEXT_HANDLE, struct ADLVersio
 #error Unknown Build Target!
 #endif
 
+// TO_DO: we need to update the Common/Lib/AMD/ADL folder to have these values from there:
+typedef struct ADLVersionsInfoX2
+{
+    char strDriverVer[ADL_MAX_PATH];
+    char strCatalystVersion[ADL_MAX_PATH];
+    char strCrimsomVersion[ADL_MAX_PATH];
+    char strCatalystWebLink[ADL_MAX_PATH];
+} ADLVersionsInfoX2, *LPADLVersionsInfoX2;
+
 typedef int(*ADL2_Graphics_VersionsX2_Get_fn)(ADL_CONTEXT_HANDLE, ADLVersionsInfoX2*);
 
 
@@ -156,7 +165,7 @@ oaDriverError oaGetDriverVersionfromADLModule(osModuleHandle adlModule, gtString
 
                 if (driverVersion.isEmpty())
                 {
-                    driverVersion.fromASCIIString(driverInfoX2.strCrimsonVersion);
+                    driverVersion.fromASCIIString(driverInfoX2.strCrimsomVersion);
                 }
             }
 
