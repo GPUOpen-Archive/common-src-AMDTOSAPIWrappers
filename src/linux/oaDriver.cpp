@@ -124,6 +124,7 @@ OA_API gtString oaGetDriverVersion(int& driverError)
     // This workaround retrieves the Catalyst version via the shell, rather than via the driver API.
     if (driverVersion.isEmpty())
     {
+        // legacy method.
         const char* COMMAND_STR = "dmesg|grep module|grep fglrx";
         gtString outStr;
         gtString versionFromFglrx;
@@ -159,22 +160,42 @@ OA_API gtString oaGetDriverVersion(int& driverError)
 
         if (driverError != OA_DRIVER_OK)
         {
-            // Brahma case.
+            // amdgpu case.
             const char* COMMAND_STR = "lsmod";
             gtString outStr;
-            gtString versionFromFglrx;
             osExecAndGrabOutput(COMMAND_STR, false, outStr);
 
             if (!outStr.isEmpty())
             {
-                int brahmaPos = outStr.find(L"amdgpu");
+                int amdgpuPos = outStr.find(L"amdgpu");
 
-                if (brahmaPos != -1)
+                if (amdgpuPos != -1)
                 {
-                    // Until we have a method for extracting the Brahma driver version,
-                    // just use "Brahma" as the version.
-                    driverVersion = L"Brahma driver";
-                    driverError = OA_DRIVER_OK;
+                    const char* MODINFO_COMMAND_STR = "modinfo amdgpu|grep ^version";
+                    osExecAndGrabOutput(MODINFO_COMMAND_STR, false, outStr);
+
+                    gtString driverVersionStr = outStr.trim();
+
+                    int verPos = driverVersionStr.reverseFind(L" ");
+
+                    if (verPos != -1)
+                    {
+                        driverVersionStr.getSubString(verPos + 1, driverVersionStr.length() - 1, driverVersionStr);
+
+                        if (!driverVersionStr.isEmpty())
+                        {
+                            driverVersionStr.prepend(L"amdgpu ");
+                            driverVersion = driverVersionStr;
+                            driverError = OA_DRIVER_OK;
+                        }
+                    }
+                    else
+                    {
+                        // failed to extract the driver version.
+                        // just use "amdgpu" as the version.
+                        driverVersion = L"amdgpu";
+                        driverError = OA_DRIVER_OK;
+                    }
                 }
             }
         }
