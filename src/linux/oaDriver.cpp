@@ -109,7 +109,7 @@ OA_API gtString oaGetDriverVersion(int& driverError)
         }
     }
 
-    GT_IF_WITH_ASSERT(rcLoadedModule && (driverModuleHandle != NULL))
+    if (rcLoadedModule && (driverModuleHandle != NULL))
     {
         driverError = oaGetDriverVersionfromADLModule(driverModuleHandle, driverVersion);
 
